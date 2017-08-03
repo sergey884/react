@@ -5,7 +5,7 @@ class Item extends Component {
 	constructor(props) {
 		super(props);
 	}
-	
+
 	render() {
 		const {id, name} = this.props;
 		return (

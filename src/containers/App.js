@@ -9,10 +9,11 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 	}
+	
 	componentDidMount(){
-		console.log("componentDidMount");;
 		this.props.actions.getItems();
 	}
+	
 	render() {
 
 		const {page : { items } } = this.props;

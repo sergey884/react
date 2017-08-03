@@ -30,11 +30,16 @@ export function getItems() {
 		dispatch(getRequest());
 		return  fetch('https://davids-restaurant.herokuapp.com/categories.json')
 			.then((response) => {
-				return response.json()
+				if(response.status == 200) {
+					return response.json()
+				}
+				dispatch(requestFailed(new Error('Response was not ok.')))
 			})
 			.then((items) => {
 				dispatch(requestSuccess(items));
 			})
-			.catch(dispatch(requestFailed(new Error('AJAX Error!'))))
+			.catch((error) => {
+				console.log(error);
+			})
 	}
 }
