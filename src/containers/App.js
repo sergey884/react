@@ -15,6 +15,7 @@ class App extends Component {
 	}
 	
 	render() {
+		console.log(this.props);
 		const {page : { items }, actions : {deletePageItem} } = this.props;
 		return (<div>
 					<Page items={items} deletePageItem={deletePageItem} />
@@ -22,9 +23,10 @@ class App extends Component {
 		}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 	return {
-		page : state.page
+		page  : state.page,
+		ownProps
 	};
 }
 
