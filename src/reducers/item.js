@@ -14,7 +14,7 @@ const initialState = {
 export default function item(state = initialState, action) {
 	switch(action.type) {
 		case DETAILS_GET_SUCCESS: 
-			var newObj = action.payload;
+			let newObj = action.payload;
 			return Object.assign({}, state, {
 				menu_items : {
 					[newObj.category.short_name] : newObj.menu_items

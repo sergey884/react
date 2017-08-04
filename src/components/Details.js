@@ -11,7 +11,7 @@ class Details extends Component {
 	}
 	
 	componentDidMount() {
-		var url = 'https://davids-restaurant.herokuapp.com/menu_items.json';
+		let url = 'https://davids-restaurant.herokuapp.com/menu_items.json';
 		const {getDetailsInfo, short_name, id} = this.props;
 		getDetailsInfo(url, short_name);
 	}
