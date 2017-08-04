@@ -38,3 +38,8 @@ export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(App);
+
+App.propTypes = {
+	items : PropTypes.array,
+	deletePageItem : PropTypes.func
+};

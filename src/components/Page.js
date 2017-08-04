@@ -1,3 +1,4 @@
+'use strict';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
@@ -30,5 +31,6 @@ export default class Page extends Component {
 }
 
 Page.propTypes = {
-	items : PropTypes.array.isRequired
+	items : PropTypes.array.isRequired,
+	deletePageItem : PropTypes.func.isRequired
 }

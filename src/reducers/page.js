@@ -1,3 +1,4 @@
+'use strict';
 import {
 	ITEMS_GET_REQUEST, 
 	ITEMS_GET_FAILURE, 
@@ -24,7 +25,6 @@ export default function page(state = initialState, action) {
 			return Object.assign({}, state, {
 				items : newItems
 			});
-		case ITEMS_GET_SUCCESS:
 		default : 
 			return state;
 	}
