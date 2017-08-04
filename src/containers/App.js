@@ -15,10 +15,9 @@ class App extends Component {
 	}
 	
 	render() {
-
-		const {page : { items } } = this.props;
+		const {page : { items }, actions : {deletePageItem} } = this.props;
 		return (<div>
-					<Page items={items} />
+					<Page items={items} deletePageItem={deletePageItem} />
 				</div>);
 		}
 }

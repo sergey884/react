@@ -16,9 +16,12 @@ export default class Page extends Component {
 	}
 	
 	render() {
-		const items = this.props.items;
+		console.log(this.props);
+		const {items, deletePageItem} = this.props;
 		const listItem = items.map((item) => {
-			return (<Item name={item.name} id={item.id} key={item.id} />);
+			return (<Item item={item} 
+						  key={item.id} 
+						  deletePageItem={deletePageItem}/>);
 		});
 
 		return (

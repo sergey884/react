@@ -4,12 +4,23 @@ import PropTypes from 'prop-types';
 class Item extends Component {
 	constructor(props) {
 		super(props);
+		this.deleteItem = this.deleteItem.bind(this);
 	}
-
+	
+	deleteItem(item) {
+		const {deletePageItem} = this.props;
+		deletePageItem(item);
+		//console.log(item);
+		//console.log(deletePageItem);
+	}
+	
 	render() {
-		const {id, name} = this.props;
+		const {item} = this.props;
 		return (
-			<li key={id}>{name}</li>
+			<li key={item.id}>
+				{item.name}
+				<button onClick={() => this.deleteItem(item)}>Delete item {item.short_name}</button>
+			</li>
 		); 
 	}
 }

@@ -1,7 +1,8 @@
 import {
 	ITEMS_GET_REQUEST, 
 	ITEMS_GET_FAILURE, 
-	ITEMS_GET_SUCCESS
+	ITEMS_GET_SUCCESS,
+	DELETE_ITEM
 } from '../constants/Page';
 
 const initialState = {
@@ -14,10 +15,15 @@ export default function page(state = initialState, action) {
 	}
 	switch(action.type) {
 		case ITEMS_GET_SUCCESS: 
-			var newState =  Object.assign({}, state, {
+			return Object.assign({}, state, {
 				items : action.payload
 			});
-			return newState;
+		case DELETE_ITEM:
+			var newStateAfterDelete = Object.assign({}, state);
+			var newItems = newStateAfterDelete.items.filter((item) => action.payload != item);
+			return Object.assign({}, state, {
+				items : newItems
+			});
 		case ITEMS_GET_SUCCESS:
 		default : 
 			return state;
