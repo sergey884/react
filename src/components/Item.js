@@ -10,8 +10,6 @@ class Item extends Component {
 	deleteItem(item) {
 		const {deletePageItem} = this.props;
 		deletePageItem(item);
-		//console.log(item);
-		//console.log(deletePageItem);
 	}
 	
 	render() {
