@@ -1,5 +1,7 @@
-const initialState = {};
+const initialState = {
+	menu_items : []
+};
 
-export default function item(state = initialState) {
+export default function item(state = initialState, action) {
 	return state;
 }

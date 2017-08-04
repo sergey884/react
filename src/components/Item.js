@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Item extends Component {
 	constructor(props) {
@@ -19,6 +20,7 @@ class Item extends Component {
 			<li key={item.id}>
 				{item.name}
 				<button onClick={() => this.deleteItem(item)}>Delete item {item.short_name}</button>
+				<Link to = {{pathname : 'details', query : {id : item.id}}}>More Details</Link>
 			</li>
 		); 
 	}

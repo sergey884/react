@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Page from '../components/Page';
 import * as actions from '../actions/actions';
+import Details from '../components/Details';
 
 class App extends Component {
 	constructor(props) {
@@ -16,7 +17,17 @@ class App extends Component {
 	
 	render() {
 		console.log(this.props);
-		const {page : { items }, actions : {deletePageItem} } = this.props;
+		const {
+				page : { items }, 
+				actions : {deletePageItem}, 
+				ownProps : { match : {params : { filter = '' }}},
+				location : { query }
+			} = this.props;
+		console.log(filter);
+		console.log(query);
+		if (filter == 'details') {
+			return (<Details />);
+		}
 		return (<div>
 					<Page items={items} deletePageItem={deletePageItem} />
 				</div>);
