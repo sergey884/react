@@ -39,10 +39,10 @@ export function deletePageItem(item) {
 	}
 }
 
-export function getItems() {
+export function getItems(url) {
 	return dispatch => {
 		dispatch(getRequest());
-		return  fetch('https://davids-restaurant.herokuapp.com/categories.json')
+		return  fetch(url)
 			.then((response) => {
 				if(response.status == 200) {
 					return response.json()

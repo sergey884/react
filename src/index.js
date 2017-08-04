@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import Root from './components/Root';
 
 const store = configureStore();
+//const history = syncHistoryWithStore(browserHistory, store)
 
 render(
 	<Root store={store} />,

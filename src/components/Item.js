@@ -20,7 +20,7 @@ class Item extends Component {
 			<li key={item.id}>
 				{item.name}
 				<button onClick={() => this.deleteItem(item)}>Delete item {item.short_name}</button>
-				<Link to = {{pathname : 'details', query : {id : item.id}}}>More Details</Link>
+				<Link to = {{pathname : 'details', query : {id : item.id, short_name : item.short_name}}}>More Details</Link>
 			</li>
 		); 
 	}

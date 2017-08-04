@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Page from '../components/Page';
 import * as actions from '../actions/actions';
+import * as detailActions from '../actions/detailActions';
 import Details from '../components/Details';
 
 class App extends Component {
@@ -12,21 +13,25 @@ class App extends Component {
 	}
 	
 	componentDidMount(){
-		this.props.actions.getItems();
+		var url = 'https://davids-restaurant.herokuapp.com/categories.json';
+		this.props.actions.getItems(url);
 	}
 	
 	render() {
 		console.log(this.props);
 		const {
 				page : { items }, 
+				item : { menu_items },
 				actions : {deletePageItem}, 
+				detailActions : {getDetailsInfo},
 				ownProps : { match : {params : { filter = '' }}},
-				location : { query }
-			} = this.props;
-		console.log(filter);
-		console.log(query);
+				location : { query = {}}
+		} = this.props;
 		if (filter == 'details') {
-			return (<Details />);
+			return (<Details short_name={query.short_name} 
+							 id={query.id} 
+								getDetailsInfo={getDetailsInfo} 
+								menu_items={menu_items} />);
 		}
 		return (<div>
 					<Page items={items} deletePageItem={deletePageItem} />
@@ -37,13 +42,15 @@ class App extends Component {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		page  : state.page,
+		item  : state.item,
 		ownProps
 	};
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		actions : bindActionCreators(actions, dispatch)
+		actions : bindActionCreators(actions, dispatch),
+		detailActions : bindActionCreators(detailActions, dispatch)
 	}
 }
 
