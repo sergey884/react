@@ -1,5 +1,6 @@
 'use strict';
 import React, { Component } from 'react';
+import DetailsItem from './DetailsItem';
 
 class Details extends Component {
 	constructor(props) {
@@ -22,12 +23,14 @@ class Details extends Component {
 		if (!itemsArr) itemsArr = [];
 
 		const listArrItem = itemsArr.map((item) => {
-			return (<li key={item.id}>{item.id}, {item.name}</li>);
+			return (<DetailsItem key={item.id}
+								 id={item.id}
+								 name={item.name} />)
 		});
 		return (
-			<div>
+			<ul>
 				{listArrItem}
-			</div>
+			</ul>
 		);
 	}
 }

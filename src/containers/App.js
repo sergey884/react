@@ -13,7 +13,7 @@ class App extends Component {
 	}
 	
 	componentDidMount(){
-		var url = 'https://davids-restaurant.herokuapp.com/categories.json';
+		let url = 'https://davids-restaurant.herokuapp.com/categories.json';
 		this.props.actions.getItems(url);
 	}
 	
