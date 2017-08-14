@@ -2,6 +2,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Item from './Item';
+import ui from 'redux-ui';
+
+
+@ui({
+	state : {
+		items : []
+	}
+})
 
 export default class Page extends Component {
 	constructor(props) {
@@ -12,12 +20,16 @@ export default class Page extends Component {
 		console.log("componentWillReceiveProps");
 	}
 	
-	componentWillUpdate() {
-		console.log("componentWillUpdate");
+	componentWillUpdate(nextProps) {
+		console.log("componentWillUpdate", nextProps);
+		const { items } = nextProps;
+        this.props.updateUI('items', items);
 	}
 	
 	render() {
 		const {items, deletePageItem} = this.props;
+		console.log(this.props.ui);
+
 		const listItem = items.map((item) => {
 			return (<Item item={item} 
 						  key={item.id} 

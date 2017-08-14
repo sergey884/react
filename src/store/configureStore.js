@@ -2,6 +2,7 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { routerMiddleware, push } from 'react-router-redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { browserHistory } from 'react-router-dom'
 import rootReducer from '../reducers';
 
@@ -11,12 +12,14 @@ export default function configureStore(initialState) {
 	const store = createStore(
 			rootReducer, 
 			initialState,
+        	composeWithDevTools(
 				applyMiddleware(
 					thunk,
 					middleware,
 					logger
-				)
-			);
+				),
+			)
+	);
 	
 	if (module.hot) {
 		module.hot.accept('../reducers', () => {

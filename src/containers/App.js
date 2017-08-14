@@ -6,6 +6,12 @@ import Page from '../components/Page';
 import * as actions from '../actions/actions';
 import * as detailActions from '../actions/detailActions';
 import Details from '../components/Details';
+import ui from 'redux-ui';
+
+@ui({
+    state : {
+    }
+})
 
 class App extends Component {
 	constructor(props) {
