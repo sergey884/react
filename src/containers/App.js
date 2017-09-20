@@ -42,7 +42,7 @@ class App extends Component {
 		return (<div>
 					<Page items={items} deletePageItem={deletePageItem} />
 				</div>);
-		}
+	}
 }
 
 const mapStateToProps = (state, ownProps) =>

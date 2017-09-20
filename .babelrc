@@ -1,0 +1,19 @@
+{
+	"plugins" : [
+		"transform-object-assign",
+		"transform-class-properties",
+		"transform-decorators-legacy",
+		["module-resolver", {
+			"root" : ['./strc'],
+			"alias" : {
+				"<components>" : "./src/components",
+				"<containers>" : "./src/containers",
+			}
+		}]
+	],
+	"presets" : [
+		"es2015",
+		"react",
+		"stage-0"
+	]
+}

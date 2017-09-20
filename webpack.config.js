@@ -2,10 +2,12 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const dev = process.env.NODE_ENV === 'development';
 
 module.exports = {
 	entry : [
 		'webpack-hot-middleware/client',
+		'babel-polyfill',
 		'./src/index'
 	],
 	output : {
@@ -13,7 +15,7 @@ module.exports = {
 		filename : 'bundle.js',
 		publicPath : '/static/'
 	},
-	devtool : 'cheap-module-eval-source-map',
+	devtool : dev ? 'cheap-module-eval-source-map' : "source-map",
 	module : {
 		rules : [
 			{
@@ -31,6 +33,9 @@ module.exports = {
 	},
 	plugins : [
 		new webpack.optimize.OccurrenceOrderPlugin(),
+		new webpack.DefinePlugin({
+			"process.env.NODE_ENV" : JSON.stringify("development")
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin()
 	]
